@@ -1,7 +1,7 @@
 /** @param {import(".").NS } ns */
 export async function main(ns) {
 
-    let allowance = 0.5;
+    let allowance = 0.25;
 
     while (true) {
         // Figure out what the cheapest upgrade will be

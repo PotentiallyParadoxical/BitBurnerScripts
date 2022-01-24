@@ -1,6 +1,8 @@
 /** @param {import(".").NS } ns */
 export async function main(ns) {
-	let target = "foodnstuff";
+	let targets = ["foodnstuff", "sigma-cosmetics", "joesguns", "hong-fang-tea", "harakiri-sushi", "iron-gym"]
+
+	let target = targets[Math.floor(Math.random()*targets.length)];
 
 	// Make sure the server has at least 75% of possible money before hacking it
 	let moneyThresh = ns.getServerMaxMoney(target) * 0.75;
@@ -9,7 +11,7 @@ export async function main(ns) {
 	let securityThresh = ns.getServerMinSecurityLevel(target) + 5;
 	
 	// Infinitly loop hack/grow/weaken on target
-	while("GLASS") {
+	while(true) {
 		if(ns.getServerSecurityLevel(target) > securityThresh){
 			await ns.weaken(target);
 			continue;
