@@ -9,10 +9,15 @@ export async function main(ns) {
     let totalRamHacked = 0;
     let totalRam = 0;
     
+    let targets = ["iron-gym"];
+    if (ns.args.length > 0) {
+        targets = ns.args;
+    }
+
+    ns.print(servers);
     await recursiveServerCheck(servers);
     async function recursiveServerCheck(servers) {
-        let server = servers.name
-
+        let server = servers.name;
         if (server == ns.getHostname()) {return;} // Don't want to ruin stuff running on host.
 
         ns.print("Checking " + server);
@@ -51,7 +56,6 @@ export async function main(ns) {
         await ns.scp("threadScripts/grower.js", server);
         await ns.scp("threadScripts/hacker.js", server);
 
-        let targets = ["iron-gym"]
         let target = targets[Math.floor(Math.random()*targets.length)];
 
         let maxThreads = Math.floor(ns.getServerMaxRam(server)/cost);

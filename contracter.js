@@ -1,6 +1,4 @@
 import { buildTree, connectLine} from "./lib";
-import { algoStockCrude } from "./contracts/algoStockTraderI";
-import { largestPrimeFactor } from "./contracts/primes";
 
 /** @param {import(".").NS } ns */
 export async function main(ns) {
@@ -46,12 +44,40 @@ export async function main(ns) {
     function getCorrectSolution(contract, server){
         switch (ns.codingcontract.getContractType(contract, server)) {
             case "Algorithmic Stock Trader I":
-                return algoStockCrude;
+                return contract_algoStockCrude;
             case "Find Largest Prime Factor":
-                return largestPrimeFactor;
+                return contract_largestPrimeFactor;
             default:
                 ns.tprint("    " + "    " + "Don't have a script for this type of contract yet. :(")
                 return null;
         }
     }
+}
+export function contract_largestPrimeFactor(n) {
+    var i = 2;
+    while (i <= n) {
+        if (n % i == 0) {
+            n /= i;
+        } else {
+            i++;
+        }
+    }
+    return i;
+}
+export function contract_algoStockCrude(array) {
+	let largestIncrease = 0;
+	for (let start = 0; start < array.length; start++) {
+		for (let end = start+1; end < array.length; end++) {
+			if (array[end] - array[start] > largestIncrease){ largestIncrease = array[end] - array[start]; }
+		}
+	}
+	return largestIncrease;
+}
+export function contract_MergeOverLappingIntervals(array) {
+	
+	return i;
+}
+export function contract_GenerateIPAddresses(n) {
+
+	return i;
 }

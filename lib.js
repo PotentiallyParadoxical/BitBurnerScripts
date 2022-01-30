@@ -6,8 +6,11 @@ export function buildTree(ns) {
         seenServers.push(server);
         let subservers = ns.scan(server);
         let structedSubs = [];
-        for (let i = 1; i < subservers.length; i++) {
-            structedSubs.push(ServerStruct(subservers[i]));
+        ns.print("asdf " + subservers);
+        for (let i = 0; i < subservers.length; i++) {
+            if (!seenServers.includes(subservers[i])) {
+                structedSubs.push(ServerStruct(subservers[i]));
+            }
         }
         return {
             name: server,
