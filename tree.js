@@ -2,8 +2,12 @@ import { buildTree } from "./lib";
 
 /** @param {import(".").NS } ns */
 export async function main(ns) {
-    ns.codingcontract
     let farmingStats = false;
+    ns.args.forEach(arg => {
+        if (arg = "-f") {
+            farmingStats = true;
+        }
+    });
     //Exec
     printDataStructure(
         buildTree(ns)

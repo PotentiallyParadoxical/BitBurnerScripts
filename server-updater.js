@@ -2,7 +2,7 @@ import { buildTree } from "./lib";
 
 /** @param {import(".").NS } ns */
 export async function main(ns) {
-    let cost = ns.getScriptRam("/threadScripts/grower.js"); if(!ns.FileExists("/threadScripts/grower.js")) { ns.alert("Missing threadScript(s) will cause anomaly."); }
+    let cost = ns.getScriptRam("/threadScripts/grower.js"); if(!ns.fileExists("/threadScripts/grower.js")) { ns.alert("Missing threadScript(s) will cause anomaly."); }
 
     let servers = buildTree(ns);
     let threadsDeployed = 0;
@@ -57,7 +57,7 @@ export async function main(ns) {
         await ns.scp("/threadScripts/grower.js", server);
         await ns.scp("/threadScripts/hacker.js", server);
 
-        let target = "foodnstuff";//targets[Math.floor(Math.random() * targets.length)];
+        let target = targets[Math.floor(Math.random() * targets.length)];
 
         let maxThreads = Math.floor(ns.getServerMaxRam(server) / cost);
         totalRamHacked += ns.getServerMaxRam(server);
